@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Speeeed - Upload</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <h1>Speeeed</h1>
+      <p>Upload images of book pages and start reading dynamically!</p>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+      <h2>Upload Images</h2>
+      <form
+        id="upload-form"
+        action="/upload"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <input
+          type="file"
+          name="file"
+          id="file-input"
+          multiple
+          required
+          style="display: none"
+        />
+        <label for="file-input" class="file-label">Choose Files</label>
+        <button type="submit" id="upload-btn" class="btn" disabled>
+          Upload
+        </button>
+      </form>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2023 Speeeed. All rights reserved.</p>
+    </footer>
+
+    <script>
+      const fileInput = document.getElementById("file-input");
+      const uploadBtn = document.getElementById("upload-btn");
+
+      fileInput.addEventListener("change", () => {
+        uploadBtn.disabled = fileInput.files.length === 0;
+      });
+    </script>
+  </body>
+</html>

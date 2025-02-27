@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Speeeed - Reader</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <h1><a href="/">Speeeed</a></h1>
+      <p>Customize your reading experience!</p>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+      <div id="controls">
+        <label for="wps">Words Per Second:</label>
+        <input type="number" id="wps" value="2" min="1" max="10" />
+        <label for="word-count">Words on Screen:</label>
+        <input type="number" id="word-count" value="1" min="1" max="10" />
+        <button id="start" class="btn">Start</button>
+        <button id="pause" class="btn">Pause</button>
+        <button id="repeat" class="btn">Repeat Process</button>
+      </div>
+      <div id="display"></div>
+      <div id="summary" style="display: none"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2023 Speeeed. All rights reserved.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script>
+      const text = {{ text | tojson }};
+      initializeReader(text);
+    </script>
+  </body>
+</html>
